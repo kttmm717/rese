@@ -16,6 +16,10 @@ class Reservation extends Model
         'reservation_time',
         'number_of_people',
     ];
+    protected $casts = [
+        'reservation_date' => 'date',
+        'reservation_time' => 'datetime'
+    ];
 
     public function store() {
         return $this->belongsTo(Store::class);

@@ -19,6 +19,19 @@ select {
     width: 140px;
     box-shadow: 0px 0px 10px #b8b8b8;
 }
+.search__button {
+    text-align: center;
+    margin-top: 10px;
+}
+.search__button button {
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    width: 50px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-align: center;
+}
 .area__search select {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
@@ -26,6 +39,7 @@ select {
 .input__search input {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
+    margin-right: 5px;
 }
 .search {
     display: flex;
@@ -65,7 +79,8 @@ select {
 }
 img {
     width: 100%;
-    border-radius: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 .store__info {
     padding: 20px;
@@ -80,6 +95,7 @@ img {
 }
 .hash p {
     padding-right: 5px;
+    font-size: 12px;
 }
 .link {
     padding: 10px;
@@ -88,6 +104,7 @@ img {
     display: inline-block;
     margin-top: 20px;
     border-radius: 7px;
+    font-size: 12px;
 }
 .icon {
     display: flex;
@@ -102,6 +119,7 @@ img {
     font-size: 30px;
     color: red;
 }
+
 
 @media(max-width: 768px) {
     .store {
@@ -130,15 +148,15 @@ img {
     }
     .area__search::after,
     .genre__search::after {
-    content: "▼";
-    color: #ddd;
-    font-size: 12px;
-    position: absolute;
-    right: -50px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
+        content: "▼";
+        color: #ddd;
+        font-size: 12px;
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
 }
 
 

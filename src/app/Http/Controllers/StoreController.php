@@ -31,4 +31,19 @@ class StoreController extends Controller
         ]);
         return view('done');
     }
+    public function search(Request $request) {
+        $area = $request->area;
+        $genre = $request->genre;
+        $keyword = $request->keyword;
+
+        $areas = Area::all();
+        $genres = Genre::all();
+
+        $stores = Store::query()->areaSearch($area)
+                                ->genreSearch($genre)
+                                ->keywordSearch($keyword)
+                                ->get();
+
+        return view('index', compact('stores', 'areas', 'genres'));
+    }
 }

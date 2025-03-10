@@ -43,6 +43,22 @@ class Store extends Model
         return $this->hasOne(QrCode::class);
     }
 
+    public function scopeKeywordSearch($query, $keyword) {
+        if(!empty($keyword)) {
+            $query->where('name', 'like', "%{$keyword}%");
+        }
+    }
+    public function scopeAreaSearch($query, $area) {
+        if(!empty($area)) {
+            $query->where('area_id', $area);
+        }
+    }
+    public function scopeGenreSearch($query, $genre) {
+        if(!empty($genre)) {
+            $query->where('genre_id', $genre);
+        }
+    }
+
     public function liked() {
         return Like::where([
             'store_id' => $this->id,

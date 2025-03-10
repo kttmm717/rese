@@ -10,7 +10,7 @@
 <div class="container">
     <div class="top">
         <a class="logo" href="/home">Rese</a>
-        <div class="search">
+        <form class="search" action="/search" method="get">
             <div class="area__search">
                 <select name="area">
                     <option value="">All area</option>
@@ -28,9 +28,12 @@
                 </select>
             </div>
             <div class="input__search">
-                <input class="keyword__search" type="text" name="keyword" placeholder="Search…">
+                <input name="keyword" class="keyword__search" type="text" placeholder="Search…">
             </div>
-        </div>
+            <div class="search__button">
+                <button>検索</button>
+            </div>
+        </form>
     </div>
 
     <div class="stores">

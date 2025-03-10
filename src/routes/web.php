@@ -18,9 +18,10 @@ use App\Http\Controllers\MypageController;
 |
 */
 
-Route::get('/', [StoreController::class, 'index']);
-Route::get('/detail/{store_id}', [StoreController::class, 'detail']);
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/', [StoreController::class, 'index']); //店舗一覧
+Route::get('/detail/{store_id}', [StoreController::class, 'detail']); //店舗詳細
+Route::get('/home', [HomeController::class, 'home']); //ホーム
+Route::get('/search', [StoreController::class, 'search']); //検索
 
 Route::middleware('auth')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
@@ -28,4 +29,5 @@ Route::middleware('auth')->group(function() {
     Route::post('/like/{store_id}', [LikeController::class, 'create']); //お気に入り登録
     Route::post('/unlike/{store_id}', [LikeController::class, 'delete']); //お気に入り削除
     Route::get('/mypage', [MypageController::class, 'mypage']); //マイページ表示
+    Route::delete('/delete/{reservation_id}', [MypageController::class, 'delete']); //予約削除
 });
