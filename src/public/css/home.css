@@ -1,0 +1,13 @@
+a,
+button {
+    color: blue;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+.container {
+    width: 50%;
+    margin: 200px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Store extends Model
 {
@@ -40,5 +41,12 @@ class Store extends Model
     }
     public function qr_code() {
         return $this->hasOne(QrCode::class);
+    }
+
+    public function liked() {
+        return Like::where([
+            'store_id' => $this->id,
+            'user_id' => Auth::id()
+        ])->exists();
     }
 }

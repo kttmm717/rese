@@ -1,0 +1,38 @@
+.container {
+    box-shadow: 1px 1px 5px #a0a0a0;
+    width: 50%;
+    margin: 100px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+    padding: 50px;
+    display: inline-block;
+}
+.text {
+    font-size: 30px;
+    padding-bottom: 50px;
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.link {
+    display: inline-block;
+    margin-bottom: 100px;
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 7px;
+}
+
+@media(max-width: 768px) {
+    .text {
+        font-size: 14px;
+    }
+    .link {
+        font-size: 10px;
+    }
+}

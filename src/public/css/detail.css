@@ -1,0 +1,138 @@
+.container {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+    display: inline-block;
+}
+.left {
+    width: 45%;
+}
+.right {
+    width: 45%;
+    background-color: rgb(53, 53, 251);
+    border-radius: 7px;
+}
+.left img {
+    width: 100%;
+}
+.store__name p {
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.back__link {
+    box-shadow: 1px 1px 5px #8a8a8a;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+.store__name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 50px;
+}
+.hash {
+    margin: 30px 0;
+    display: flex;
+}
+.hash p {
+    padding-right: 5px;
+}
+.form {
+    padding: 30px 20px;
+}
+.rese__title {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+input {
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px;
+}
+select {
+    background-color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px;
+}
+table {
+    background-color: rgb(83, 83, 253);
+    color: white;
+    padding: 30px 20px;
+    display: block;
+    border-radius: 3px;
+}
+tr {
+    line-height: 30px;
+}
+th {
+    font-weight: normal;
+}
+td {
+    padding-left: 10px;
+}
+.button {
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 140px;
+    padding: 10px;
+    cursor: pointer;
+}
+.button button {
+    width: 100%;
+}
+.time__select,
+.number__select {
+    position: relative;
+}
+.time__select::after,
+.number__select::after {
+    content: "▼";
+    color: #ddd;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-70%);
+    pointer-events: none;
+}
+.text {
+    color: white;
+    font-size: 14px;
+    padding-top: 10px;
+}
+.disabled {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+@media(max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .left {
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 50px;
+    }
+    .right {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

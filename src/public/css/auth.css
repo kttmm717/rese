@@ -1,0 +1,63 @@
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+    padding: 50px;
+    display: inline-block;
+}
+.container {
+    box-shadow: 1px 1px 5px #a0a0a0;
+    width: 50%;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+.title {
+    color: white;
+    font-weight: bold;
+    background-color: blue;
+    padding: 30px;
+    font-size: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.button {
+    text-align: right;
+}
+.button button {
+    color: white;
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+input {
+    border-bottom: 1px solid black;
+    width: 80%;
+    padding: 5px 10px;
+    font-size: 30px;
+}
+.email,
+.password,
+.name {
+    padding-bottom: 50px;
+}
+.fas{
+    font-size: 40px;
+}
+
+@media(max-width: 768px) {
+    .title {
+        text-align: center;
+    }
+    .button {
+        text-align: center;
+    }
+    .login {
+        width: 80%;
+    }
+}
