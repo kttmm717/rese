@@ -130,6 +130,12 @@ img {
 .text {
     padding-bottom: 30px;
 }
+.change__btn {
+    background-color: white;
+    color: blue;
+    border-radius: 5px;
+    padding: 5px;
+}
 
 @media(max-width: 768px) {
     .mypage {

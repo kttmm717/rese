@@ -15,35 +15,43 @@
             <p class="title left__title">予約状況</p>
             @if($reservations->isNotEmpty())
                 @foreach($reservations as $reservation)
-                <div class="rese__card">
-                    <form class="form" action="/delete/{{$reservation->id}}" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <div class="clock">
-                            <i class="fas fa-clock"></i>
-                            <p>予約</p>
-                        </div>
-                        <button class="btn">✕</button>
-                    </form>
-                    <table>
-                        <tr>
-                            <th>Shop</th>
-                            <td>{{$reservation->store->name}}</td>
-                        </tr>
-                        <tr>
-                            <th>Date</th>
-                            <td>{{$reservation->reservation_date->format('Y-m-d')}}</td>
-                        </tr>
-                        <tr>
-                            <th>Time</th>
-                            <td>{{$reservation->reservation_time->format('H:i')}}</td>
-                        </tr>
-                        <tr>
-                            <th>Number</th>
-                            <td>{{$reservation->number_of_people}}人</td>
-                        </tr>
-                    </table>
-                </div>
+                    @if($reservation->reservation_date->greaterThanOrEqualTo(now()->startOfDay()))
+                    <div class="rese__card">
+                        <form class="form" action="/delete/{{$reservation->id}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <div class="clock">
+                                <i class="fas fa-clock"></i>
+                                <p>予約</p>
+                            </div>
+                            <button class="btn">✕</button>
+                        </form>
+                        <table>
+                            <tr>
+                                <th>Shop</th>
+                                <td>{{$reservation->store->name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{$reservation->reservation_date->format('Y-m-d')}}</td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td>{{$reservation->reservation_time->format('H:i')}}</td>
+                            </tr>
+                            <tr>
+                                <th>Number</th>
+                                <td>{{$reservation->number_of_people}}人</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <a class="change__btn" href="/change/{{$reservation->id}}">予約を変更する</a>
+                                </th>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    @endif
                 @endforeach
             @else
                 <p class="text">★現在予約はありません</p>

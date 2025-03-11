@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class MypageController extends Controller
 {
     public function mypage() {
-        $reservations = Reservation::where('user_id', Auth::id())->get();
+        $reservations = Reservation::where('user_id', Auth::id())
+                                   ->orderBy('reservation_date')
+                                   ->get();
+                                   
         $user = Auth::user();
 
         $query = Store::query();
@@ -27,5 +30,8 @@ class MypageController extends Controller
         $reservation = Reservation::find($reservation_id);
         $reservation->delete();
         return back();
+    }
+    public function change() {
+        
     }
 }

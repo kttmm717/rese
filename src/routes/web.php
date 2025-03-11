@@ -46,6 +46,7 @@ Route::get('/search', [StoreController::class, 'search']); //検索
 Route::middleware('auth')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
     Route::post('/done', [StoreController::class, 'reservation']); //予約作成
+    Route::get('change/{reservation_id}', [StoreController::class, 'change']); //予約変更
     Route::post('/like/{store_id}', [LikeController::class, 'create']); //お気に入り登録
     Route::post('/unlike/{store_id}', [LikeController::class, 'delete']); //お気に入り削除
     Route::get('/mypage', [MypageController::class, 'mypage']); //マイページ表示

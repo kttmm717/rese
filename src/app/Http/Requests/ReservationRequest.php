@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReservationRequest extends FormRequest
@@ -24,7 +25,7 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'reservation_date' => 'required',
+            'reservation_date' => 'required|after_or_equal:today',
             'reservation_time' => 'required',
             'number_of_people' => 'required',
         ];
@@ -33,8 +34,22 @@ class ReservationRequest extends FormRequest
     {
         return [
             'reservation_date.required' => '日にちを選択してください',
+            'reservation_date.after_or_equal' => '過去の日時は選択できません',
             'reservation_time.required' => '時間を選択してください',
             'number_of_people.required' => '人数を選択してください',
         ];
+    }
+    public function withValidator($validator) {
+        $validator->after(function ($validator) {
+            $date = $this->input('reservation_date');
+            $time = $this->input('reservation_time');
+
+            if($date && $time) {
+                $reservationDateTime = Carbon::parse("$date $time");
+                if($reservationDateTime->lessThan(now())) {
+                    $validator->errors()->add('reservation_date', '過去の日時は選択できません');
+                }
+            }
+        });
     }
 }
