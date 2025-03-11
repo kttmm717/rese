@@ -27,29 +27,42 @@
             @csrf
             <p class="rese__title">予約</p>
             <input type="hidden" name="id" value="{{$store->id}}">
-            <input type="date" name="reservation_date">
+            <input id="date-input" type="date" name="reservation_date">
+            @error('reservation_date')
+                <p class="error">{{$message}}</p>
+            @enderror
             <div class="time__select">
-                <select name="reservation_time" id="time-select"></select>
+                <select id="time-select" name="reservation_time">
+                    <option value="">時間を選択してください</option>
+                </select>
             </div>
+            @error('reservation_time')
+                <p class="error">{{$message}}</p>
+            @enderror
             <div class="number__select">
-                <select name="number_of_people" id="number-select"></select>
+                <select id="number-select" name="number_of_people">
+                    <option value="">人数を選択してください</option>
+                </select>
             </div>
+            @error('number_of_people')
+                <p class="error">{{$message}}</p>
+            @enderror
             <table>
                 <tr>
                     <th>Shop</th>
-                    <td></td>
+                    <td>{{$store->name}}</td>
                 </tr>
                 <tr>
                     <th>Date</th>
-                    <td></td>
+                    <td id="date-preview"></td>
                 </tr>
                 <tr>
                     <th>Time</th>
-                    <td></td>
+                    <td id="time-preview"></td>
                 </tr>
                 <tr>
                     <th>Number</th>
-                    <td></td>
+                    <td id="number-preview"></td>
                 </tr>
             </table>
             @if(auth()->check())
@@ -75,7 +88,6 @@
             timeSelect.appendChild(option);
         }
     }
-    timeSelect.value = "17:00";
 
     const numberSelect = document.getElementById('number-select');
     for(let i=1; i<=50; i++) {
@@ -83,7 +95,18 @@
         const option = new Option(number, i);
         numberSelect.appendChild(option);
     }
-    numberSelect.value = 1;
 
+    document.getElementById("date-input").addEventListener("input", function() {
+        document.getElementById("date-preview").textContent = this.value;
+    });
+
+    document.getElementById("time-select").addEventListener("change", function() {
+        document.getElementById("time-preview").textContent = this.value;
+    });
+
+    document.getElementById("number-select").addEventListener("change", function() {
+        document.getElementById("number-preview").textContent = this.value ? this.value + "人" : "";
+    });
+    
 </script>
 @endsection

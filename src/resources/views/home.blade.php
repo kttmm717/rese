@@ -12,7 +12,7 @@
         <a href="/">home</a>
         <form action="/logout" method="post">
             @csrf
-            <button>ログアウト</button>
+            <button>Logout</button>
         </form>
         <a href="/mypage">Mypage</a>
     @else

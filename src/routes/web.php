@@ -6,6 +6,8 @@ use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Requests\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,24 @@ use App\Http\Controllers\MypageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//メール認証
+Route::post('/register', [RegisterController::class, 'create']);
+
+Route::get('/email/verify', function() {
+    return view('auth.verify-email');
+})->name('verification.notice');
+
+Route::post('/email/verify', function() {
+    session()->get('unauthenticated_user')->sendEmailVerificationNotification();
+    return back()->with('message', '認証メールを再送しました');
+});
+Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request) {
+    $request->fulfill();
+    session()->forget('unauthenticated_user');
+    return redirect('/thanks');
+})->name('verification.verify');
+
 
 Route::get('/', [StoreController::class, 'index']); //店舗一覧
 Route::get('/detail/{store_id}', [StoreController::class, 'detail']); //店舗詳細

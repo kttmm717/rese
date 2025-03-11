@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReservationRequest;
 
 class StoreController extends Controller
 {
@@ -21,7 +22,7 @@ class StoreController extends Controller
         $store = Store::find($store_id);
         return view('detail', compact('store'));
     }
-    public function reservation(Request $request) {
+    public function reservation(ReservationRequest $request) {
         Reservation::create([
             'user_id' => Auth::id(),
             'store_id' => $request->id,

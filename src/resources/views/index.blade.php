@@ -10,7 +10,7 @@
 <div class="container">
     <div class="top">
         <a class="logo" href="/home">Rese</a>
-        <form class="search" action="/search" method="get">
+        <form id="search-form" class="search" action="/search" method="get">
             <div class="area__search">
                 <select name="area">
                     <option value="">All area</option>
@@ -62,4 +62,51 @@
         @endforeach
     </div>
 </div>
+<script>
+    function adjustLastRowAlignment() {
+        const container = document.querySelector(".stores");
+        const stores = Array.from(container.children).filter(el => el.matches("div"));
+
+        if(stores.length === 0) return;
+
+        const existingDummy = container.querySelector(".dummy-space");
+        
+        if(existingDummy) {
+            existingDummy.remove();
+        }        
+        const containerWidth = container.clientWidth;
+        let rowStores = [];
+        let rowWidth = 0;
+
+        for(const store of stores) {
+            const storeWidth = store.offsetWidth;
+            if(rowWidth + storeWidth > containerWidth) {
+                rowStores = [];
+                rowWidth = 0;
+            }
+            rowStores.push(store);
+            rowWidth += storeWidth;
+        }
+        if(rowStores.length > 0) {
+            const dummy = document.createElement("div");
+            dummy.classList.add("dummy-space");
+            dummy.style.flex = "1 1 auto";
+            dummy.style.visibility = "hidden";
+
+            container.appendChild(dummy);
+        }
+    }
+
+    window.addEventListener("resize", adjustLastRowAlignment);
+
+    adjustLastRowAlignment();
+
+    const searchForm = document.querySelector("#search-form"); //検索フォーム取得
+    if (searchForm) {
+        searchForm.addEventListener("submit", function() {
+            setTimeout(adjustLastRowAlignment, 300);
+        });
+    }
+</script>
+
 @endsection

@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 .container {
     width: 90%;
     margin: 50px auto;
@@ -72,10 +75,10 @@ select {
     flex-wrap: wrap;
 }
 .store {
-    width: 24%;
+    width: 25%;
     border-radius: 7px;
-    box-shadow: 1px 1px 10px #b8b8b8;
-    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 img {
     width: 100%;

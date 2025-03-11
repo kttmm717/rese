@@ -127,6 +127,9 @@ img {
     font-size: 30px;
     color: red;
 }
+.text {
+    padding-bottom: 30px;
+}
 
 @media(max-width: 768px) {
     .mypage {
