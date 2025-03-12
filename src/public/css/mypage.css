@@ -43,6 +43,9 @@
     border-radius: 7px;
     margin-bottom: 30px;
 }
+.finished {
+    background-color: orange;
+}
 .form {
     display: flex;
     justify-content: space-between;
@@ -133,6 +136,12 @@ img {
 .change__btn {
     background-color: white;
     color: blue;
+    border-radius: 5px;
+    padding: 5px;
+}
+.review__btn {
+    background-color: white;
+    color: orange;
     border-radius: 5px;
     padding: 5px;
 }

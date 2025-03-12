@@ -12,51 +12,82 @@
     <div class="mypage">
         <div class="left">
             <p class="user__name">{{$user->name}}さん</p>
+            
             <p class="title left__title">予約状況</p>
-            @if($reservations->isNotEmpty())
-                @foreach($reservations as $reservation)
-                    @if($reservation->reservation_date->greaterThanOrEqualTo(now()->startOfDay()))
-                    <div class="rese__card">
-                        <form class="form" action="/delete/{{$reservation->id}}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <div class="clock">
-                                <i class="fas fa-clock"></i>
-                                <p>予約</p>
-                            </div>
-                            <button class="btn">✕</button>
-                        </form>
-                        <table>
-                            <tr>
-                                <th>Shop</th>
-                                <td>{{$reservation->store->name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Date</th>
-                                <td>{{$reservation->reservation_date->format('Y-m-d')}}</td>
-                            </tr>
-                            <tr>
-                                <th>Time</th>
-                                <td>{{$reservation->reservation_time->format('H:i')}}</td>
-                            </tr>
-                            <tr>
-                                <th>Number</th>
-                                <td>{{$reservation->number_of_people}}人</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <a class="change__btn" href="/change/{{$reservation->id}}">予約を変更する</a>
-                                </th>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                    @endif
-                @endforeach
+                @if($futureReservations->isEmpty())
+                    <p class="text">★現在予約はありません</p>
+                @else
+                    @foreach($futureReservations as $reservation)
+                        <div class="rese__card">
+                            <form class="form" action="/delete/{{$reservation->id}}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <div class="clock">
+                                    <i class="fas fa-clock"></i>
+                                    <p>予約</p>
+                                </div>
+                                <button class="btn">✕</button>
+                            </form>
+                            <table>
+                                <tr>
+                                    <th>Shop</th>
+                                    <td>{{$reservation->store->name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>{{$reservation->reservation_date->format('Y-m-d')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Time</th>
+                                    <td>{{$reservation->reservation_time->format('H:i')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Number</th>
+                                    <td>{{$reservation->number_of_people}}人</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <a class="change__btn" href="/change/{{$reservation->id}}">予約を変更する</a>
+                                    </th>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    @endforeach
+                @endif
+
+            <p class="title left__title">レビューしませんか？</p>
+            @if($pastReservations->isEmpty())
+                <p class="text">★現在レビューできるお店はありません</p>
             @else
-                <p class="text">★現在予約はありません</p>
+                @foreach($pastReservations as $reservation)
+                        <div class="rese__card finished">
+                            <form class="form" action="review/delete/{{$reservation->id}}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <div></div>
+                                <button class="btn">✕</button>
+                            </form>
+                            <table>
+                                <tr>
+                                    <th>Shop</th>
+                                    <td>{{$reservation->store->name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Visit Day</th>
+                                    <td>{{$reservation->reservation_date->format('Y-m-d')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <a class="review__btn" href="/review/{{$reservation->id}}">レビューする</a>
+                                    </th>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                @endforeach                
             @endif
-        </div>
+        </div>   
         <div class="right">
             <p class="right__user--name">{{$user->name}}さん</p>
             <p class="title">お気に入り店舗</p>
@@ -72,7 +103,7 @@
                                 <p>#{{$store->genre->name}}</p>
                             </div>
                             <div class="icon">
-                                <a class="link" href="/detail/">詳しくみる</a>
+                                <a class="link" href="/detail/{{$store->id}}">詳しくみる</a>
                                 <form action="{{$store->liked() ? '/unlike/'.$store->id : '/like/'.$store->id}}" method="post">
                                 @csrf
                                 @if($store->liked())

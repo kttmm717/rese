@@ -30,4 +30,5 @@ class Reservation extends Model
     public function reservation_changes() {
         return $this->hasMany(ReservationChange::class);
     }
+
 }

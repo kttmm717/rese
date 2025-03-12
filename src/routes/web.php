@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Requests\EmailVerificationRequest;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +48,13 @@ Route::get('/search', [StoreController::class, 'search']); //検索
 Route::middleware('auth')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
     Route::post('/done', [StoreController::class, 'reservation']); //予約作成
-    Route::get('change/{reservation_id}', [StoreController::class, 'change']); //予約変更
+    Route::get('change/{reservation_id}', [MypageController::class, 'changeView']); //予約変更
+    Route::post('change/{reservation_id}', [MypageController::class, 'reservationChange']); //予約変更完了
     Route::post('/like/{store_id}', [LikeController::class, 'create']); //お気に入り登録
     Route::post('/unlike/{store_id}', [LikeController::class, 'delete']); //お気に入り削除
     Route::get('/mypage', [MypageController::class, 'mypage']); //マイページ表示
     Route::delete('/delete/{reservation_id}', [MypageController::class, 'delete']); //予約削除
+    Route::delete('review/delete/{reservation_id}', [MypageController::class, 'reviewDelete']); //レビュー欄削除
+    Route::get('/review/{reservation_id}', [ReviewController::class, 'review']); //レビュー画面表示
+    Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
 });
