@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    margin: 200px auto;
+    text-align: center;
+}
+p {
+    font-size: 30px;
+    padding-bottom: 70px;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+    padding: 50px;
+    display: inline-block;
+}
+
+@media(max-width: 768px) {
+    p {
+        font-size: 20px;
+    }
+}

@@ -61,4 +61,8 @@ class MypageController extends Controller
         $reservation = Reservation::find($reservation_id);
         return view('qrcode', compact('reservation'));
     }
+    public function qrCreate($id) {
+        $reservation = Reservation::findOrFail($id);
+        return view('qrcode-used', compact('reservation'));
+    }
 }

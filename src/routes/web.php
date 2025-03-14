@@ -85,4 +85,5 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::get('/review/{reservation_id}', [ReviewController::class, 'review']); //レビュー画面表示
     Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
     Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']);
+    Route::get('/reservation/verify/{id}', [MypageController::class, 'qrCreate'])->name('reservation.verify');
 });
