@@ -12,15 +12,15 @@
     <form class="form" action="/store/create" method="post" enctype="multipart/form-data">
         @csrf
         <h2>店舗作成</h2>
+        @error('image_path')
+        <p class="error">{{$message}}</p>
+        @enderror
         <div class="image">
             <div class="image__preview"></div>
             <label>
                 画像を選択する
                 <input id="input-file" class="input__file" type="file" name="image">
             </label>
-            @error('image_path')
-            <p class="error">{{$message}}</p>
-            @enderror
         </div>
 
         <div class="item">

@@ -11,6 +11,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmailController;
 use App\Http\Requests\EmailVerificationRequest;
 
 
@@ -38,6 +39,8 @@ Route::middleware('owner')->group(function() {
     Route::post('/store/create', [OwnerController::class, 'storeCreate']); //店舗作成
     Route::get('/store/update', [OwnerController::class, 'storeUpdateView']); //店舗更新画面表示
     Route::post('/store/update', [OwnerController::class, 'storeUpdate']); //店舗更新
+    Route::get('/owner/notify', [EmailController::class, 'sendEmailView']);
+    Route::post('/owner/notify', [EmailController::class, 'sendEmail']);
 });
 Route::middleware('admin')->group(function() {
     Route::get('/admin/home', [HomeController::class, 'adminHome']); //管理者ホーム

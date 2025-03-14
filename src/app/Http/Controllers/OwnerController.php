@@ -9,6 +9,7 @@ use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use Carbon\Carbon;
+use App\Http\Requests\StoreRequest;
 
 class OwnerController extends Controller
 {
@@ -63,7 +64,7 @@ class OwnerController extends Controller
         $genres = Genre::all();
         return view('owner/create', compact('areas', 'genres'));
     }
-    public function storeCreate(Request $request) {
+    public function storeCreate(StoreRequest $request) {
         $file = $request->file('image');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/img', $fileName);
@@ -91,7 +92,7 @@ class OwnerController extends Controller
 
         return view('owner.update', compact('store', 'areas', 'genres'));
     }
-    public function storeUpdate(Request $request) {
+    public function storeUpdate(StoreRequest $request) {
         $file = $request->file('image');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/img', $fileName);

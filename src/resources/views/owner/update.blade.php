@@ -12,15 +12,15 @@
     <form class="form" action="/store/update" method="post" enctype="multipart/form-data">
         @csrf
         <h2>店舗情報編集</h2>
+        @error('image_path')
+        <p class="error">{{$message}}</p>
+        @enderror
         <div class="image">
             <div class="image__preview"></div>
             <label>
                 画像を選択する
                 <input id="input-file" class="input__file" type="file" name="image" value="{{\Storage::url($store->image_path)}}">
             </label>
-            @error('image_path')
-            <p class="error">{{$message}}</p>
-            @enderror
         </div>
 
         <div class="item">
@@ -34,11 +34,11 @@
         <div class="item">
             <p class="item__name">エリア</p>
             <select name="area_id">
-            @foreach($areas as $area)
-                <option value="{{ $area->id }}" {{ $store->area_id == $area->id ? 'selected' : '' }}>
+                @foreach($areas as $area)
+                <option value="{{$area->id}}" {{$store->area_id == $area->id ? 'selected' : ''}}>
                     {{$area->name}}
                 </option>
-            @endforeach
+                @endforeach
             </select>
             @error('area')
             <p class="error">{{$message}}</p>
@@ -49,7 +49,7 @@
             <p class="item__name">ジャンル</p>
             <select name="genre_id">
             @foreach($genres as $genre)
-                <option value="{{ $genre->id }}" {{ $store->genre_id == $genre->id ? 'selected' : '' }}>
+                <option value="{{$genre->id}}" {{$store->genre_id == $genre->id ? 'selected' : ''}}>
                     {{$genre->name}}
                 </option>
             @endforeach
