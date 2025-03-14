@@ -136,7 +136,8 @@ img {
 .text {
     padding-bottom: 30px;
 }
-.change__btn {
+.change__btn,
+.qr__btn {
     background-color: white;
     color: blue;
     border-radius: 5px;

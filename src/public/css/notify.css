@@ -47,3 +47,18 @@ textarea {
     padding: 10px 20px;
     border-radius: 7px;
 }
+
+@media(max-width: 768px) {
+    h2 {
+        font-size: 24px;
+    }
+    .item {
+        font-size: 18px;
+    }
+    .btn {
+        text-align: center;
+    }
+    .btn button {
+        width: 100%;
+    }
+}

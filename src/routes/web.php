@@ -84,4 +84,5 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::delete('review/delete/{reservation_id}', [MypageController::class, 'reviewDelete']); //レビュー欄削除
     Route::get('/review/{reservation_id}', [ReviewController::class, 'review']); //レビュー画面表示
     Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
+    Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']);
 });

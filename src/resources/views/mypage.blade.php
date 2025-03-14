@@ -49,7 +49,9 @@
                                     <th>
                                         <a class="change__btn" href="/change/{{$reservation->id}}">予約を変更する</a>
                                     </th>
-                                    <td></td>
+                                    <td>
+                                        <a class="qr__btn" href="/qr/{{$reservation->id}}">QRコードを表示</a>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

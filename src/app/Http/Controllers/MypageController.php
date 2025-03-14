@@ -57,4 +57,8 @@ class MypageController extends Controller
         ]);
         return redirect('/mypage')->with('flashSuccess', '予約を変更しました！');
     }
+    public function qrView($reservation_id) {
+        $reservation = Reservation::find($reservation_id);
+        return view('qrcode', compact('reservation'));
+    }
 }
