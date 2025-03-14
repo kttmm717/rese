@@ -22,9 +22,11 @@
         }
 
         @if(Session::has('flashSuccess'))
-        //flashの付くセッション名は一度だけデータを格納するもので、次回リクエスト後に削除される
 	        toastr.success("{{ session('flashSuccess') }}");
-	        //セッションからflashSuccessキーに格納された値を取り出して成功メッセージとして表示
+        @endif
+
+        @if(Session::has('flashError'))
+            toastr.error("{{ session('flashError') }}");
         @endif
     </script>
 </body>

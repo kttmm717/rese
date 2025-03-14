@@ -13,7 +13,7 @@
         <div class="left">
             <p class="user__name">{{$user->name}}さん</p>
             
-            <p class="title left__title">予約状況</p>
+            <p class="title rese__title">予約状況</p>
                 @if($futureReservations->isEmpty())
                     <p class="text">★現在予約はありません</p>
                 @else
@@ -56,7 +56,7 @@
                     @endforeach
                 @endif
 
-            <p class="title left__title">レビューしませんか？</p>
+            <p class="title review__title">レビューしませんか？</p>
             @if($pastReservations->isEmpty())
                 <p class="text">★現在レビューできるお店はありません</p>
             @else
@@ -90,12 +90,12 @@
         </div>   
         <div class="right">
             <p class="right__user--name">{{$user->name}}さん</p>
-            <p class="title">お気に入り店舗</p>
+            <p class="title like__title">お気に入り店舗</p>
             <div class="store__cards">
                 @if($stores->isNotEmpty())
                     @foreach($stores as $store)
                     <div class="store__card">
-                        <img src="{{asset($store->image_path)}}">
+                        <img src="{{\Storage::url($store->image_path)}}">
                         <div class="store__info">
                             <p class="store__name">{{$store->name}}</p>
                             <div class="hash">

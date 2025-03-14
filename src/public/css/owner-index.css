@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    width: 90%;
+    margin: 50px auto;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+}
+img {
+    width: 40%;
+}
+.store__info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.store__name {
+    font-weight: bold;
+    font-size: 40px;
+}
+.rese__title {
+    font-size: 20px;
+}
+.day {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 0;
+}
+.reservations {
+    display: flex;
+    flex-wrap: wrap;
+}
+.reservation {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+th,td {
+    font-weight: normal;
+    padding: 10px;
+}
+.rese {
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+}
+.date__search {
+    padding-left: 30px;
+}
+.search__btn {
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    padding: 5px 10px;
+}

@@ -15,6 +15,7 @@ class Store extends Model
         'area_id',
         'genre_id',
         'description',
+        'image_path',
         'owner_id',
     ];
 

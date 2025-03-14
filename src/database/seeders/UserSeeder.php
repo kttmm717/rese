@@ -19,123 +19,171 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => '仙人店舗代表者',
-                'email' => 'store1@gmail.com',
+                'email' => 'owner1@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '牛助店舗代表者',
-                'email' => 'store2@gmail.com',
+                'email' => 'owner2@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '戦慄店舗代表者',
-                'email' => 'store3@gmail.com',
+                'email' => 'owner3@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => 'ルーク店舗代表者',
-                'email' => 'store4@gmail.com',
+                'email' => 'owner4@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '志摩屋店舗代表者',
-                'email' => 'store5@gmail.com',
+                'email' => 'owner5@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '香店舗代表者',
-                'email' => 'store6@gmail.com',
+                'email' => 'owner6@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => 'JJ店舗代表者',
-                'email' => 'store7@gmail.com',
+                'email' => 'owner7@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => 'らーめん極み店舗代表者',
-                'email' => 'store8@gmail.com',
+                'email' => 'owner8@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '鳥雨店舗代表者',
-                'email' => 'store9@gmail.com',
+                'email' => 'owner9@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '築地色合店舗代表者',
-                'email' => 'store10@gmail.com',
+                'email' => 'owner10@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '晴海店舗代表者',
-                'email' => 'store11@gmail.com',
+                'email' => 'owner11@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '三子店舗代表者',
-                'email' => 'store12@gmail.com',
+                'email' => 'owner12@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '八戒店舗代表者',
-                'email' => 'store13@gmail.com',
+                'email' => 'owner13@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '福助店舗代表者',
-                'email' => 'store14@gmail.com',
+                'email' => 'owner14@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => 'ラー北店舗代表者',
-                'email' => 'store15@gmail.com',
+                'email' => 'owner15@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '翔店舗代表者',
-                'email' => 'store16@gmail.com',
+                'email' => 'owner16@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '経緯店舗代表者',
-                'email' => 'store17@gmail.com',
+                'email' => 'owner17@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '漆店舗代表者',
-                'email' => 'store18@gmail.com',
+                'email' => 'owner18@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => 'THE TOOL店舗代表者',
-                'email' => 'store19@gmail.com',
+                'email' => 'owner19@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
             ],
             [
                 'name' => '木船店舗代表者',
-                'email' => 'store20@gmail.com',
+                'email' => 'owner20@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'role' => 'owner',
+            ],
+            [
+                'name' => '管理者',
+                'email' => 'admin@gmail.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+            ],
+            [
+                'name' => '一般ユーザー1',
+                'email' => 'user1@gmail.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('password'),
+                'role' => 'user',
+            ],
+            [
+                'name' => '一般ユーザー2',
+                'email' => 'user2@gmail.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('password'),
+                'role' => 'user',
+            ],
+            [
+                'name' => '一般ユーザー3',
+                'email' => 'user3@gmail.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('password'),
+                'role' => 'user',
             ],
         ];
 

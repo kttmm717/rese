@@ -39,7 +39,7 @@
     <div class="stores">
         @foreach($stores as $store)
             <div class="store">
-                <img src="{{asset($store->image_path)}}">
+                <img src="{{\Storage::url($store->image_path)}}">
                 <div class="store__info">
                     <p class="store__name">{{$store->name}}</p>
                     <div class="hash">

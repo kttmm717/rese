@@ -33,8 +33,11 @@
     font-weight: bold;
     font-size: 30px;
 }
-.left__title {
+.rese__title {
     padding-top: 87px;
+}
+.review__title {
+    padding-top: 30px;
 }
 .rese__card {
     background-color: rgb(53, 53, 251);
@@ -164,5 +167,8 @@ img {
     }
     .user__name {
         display: block;
+    }
+    .like__title {
+        padding-top: 30px;
     }
 }

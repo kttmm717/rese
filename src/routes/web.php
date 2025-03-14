@@ -8,6 +8,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\AdminController;
 use App\Http\Requests\EmailVerificationRequest;
 
 
@@ -21,6 +24,27 @@ use App\Http\Requests\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/owner/login', [AuthController::class, 'ownerLoginView']); //店舗代表者ログイン画面表示
+Route::post('/owner/login', [AuthController::class, 'ownerLogin']); //店舗代表者ログイン
+Route::get('/admin/login', [AuthController::class, 'adminLoginView']); //管理者ログイン画面表示
+Route::post('/admin/login', [AuthController::class, 'adminLogin']); //管理者ログイン
+
+Route::middleware('owner')->group(function() {
+    Route::get('/owner/home', [HomeController::class, 'ownerHome']); //店舗代表者ホーム
+    Route::get('/reservation', [OwnerController::class, 'index']); //自店予約情報確認画面表示
+    Route::get('/reservation/search', [OwnerController::class, 'search']); //予約日検索
+    Route::get('/store/create', [OwnerController::class, 'storeCreateView']); //店舗作成画面表示
+    Route::post('/store/create', [OwnerController::class, 'storeCreate']); //店舗作成
+    Route::get('/store/update', [OwnerController::class, 'storeUpdateView']); //店舗更新画面表示
+    Route::post('/store/update', [OwnerController::class, 'storeUpdate']); //店舗更新
+});
+Route::middleware('admin')->group(function() {
+    Route::get('/admin/home', [HomeController::class, 'adminHome']); //管理者ホーム
+    Route::get('/admin', [AdminController::class, 'index']); //店舗代表者を作成画面表示
+    Route::post('/admin/register', [AdminController::class, 'ownerCreate']); //店舗代表者作成
+});
+
 
 //メール認証
 Route::post('/register', [RegisterController::class, 'create']);
@@ -45,7 +69,7 @@ Route::get('/detail/{store_id}', [StoreController::class, 'detail']); //店舗�
 Route::get('/home', [HomeController::class, 'home']); //ホーム
 Route::get('/search', [StoreController::class, 'search']); //検索
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth', 'verified')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
     Route::post('/done', [StoreController::class, 'reservation']); //予約作成
     Route::get('change/{reservation_id}', [MypageController::class, 'changeView']); //予約変更
