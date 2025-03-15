@@ -27,7 +27,7 @@
     </div>
 
     <div class="right">
-        <form class="form" action="{{$reservation ?? false ? url('change/'.$reservation->id) : '/done'}}" method="post">
+        <form class="form" action="{{$reservation ?? false ? url('change/'.$reservation->id) : url('/stripe/'.$store->id)}}" method="post">
             @csrf
             <p class="rese__title">{{$reservation ?? false ? '予約編集' : '予約'}}</p>
             <input type="hidden" name="id" value="{{$store->id}}">
@@ -51,6 +51,19 @@
             @error('number_of_people')
                 <p class="error">{{$message}}</p>
             @enderror
+            <div class="course__select">
+                <select id="course__select" name="course">
+                    <option value="">価格のコースを選択してください</option>
+                    <option value="1000">1000円</option>
+                    <option value="2000">2000円</option>
+                    <option value="3000">3000円</option>
+                    <option value="4000">4000円</option>
+                    <option value="5000">5000円</option>
+                </select>
+            </div>
+            @error('course')
+                <p class="error">{{$message}}</p>
+            @enderror
             <table>
                 <tr>
                     <th>Shop</th>
@@ -67,6 +80,10 @@
                 <tr>
                     <th>Number</th>
                     <td id="number-preview"></td>
+                </tr>
+                <tr>
+                    <th>Course</th>
+                    <td id="course-preview"></td>
                 </tr>
             </table>
             @if(isset($reservation))
@@ -86,6 +103,8 @@
         </form>
     </div>
 </div>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const timeSelect = document.getElementById('time-select');
@@ -133,6 +152,10 @@
 
     document.getElementById("number-select").addEventListener("change", function() {
         document.getElementById("number-preview").textContent = this.value ? this.value + "人" : "";
+    });
+
+    document.getElementById("course__select").addEventListener("change", function() {
+        document.getElementById("course-preview").textContent = this.value ? this.value + "円" : "";
     });
     
 </script>
