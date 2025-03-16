@@ -19,6 +19,9 @@ class Store extends Model
         'owner_id',
     ];
 
+    public function courses() {
+        return $this->hasMany(Course::class);
+    }
     public function store_images() {
         return $this->hasMany(StoreImage::class);
     }

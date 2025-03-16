@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaSeeder::class);
         $this->call(GenreSeeder::class);
         $this->call(StoreSeeder::class);
+        $this->call(CourseSedder::class);
         $this->call(ReservationSeeder::class);
         $this->call(LikeSeeder::class);
     }

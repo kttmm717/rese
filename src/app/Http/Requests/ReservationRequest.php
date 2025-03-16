@@ -28,6 +28,7 @@ class ReservationRequest extends FormRequest
             'reservation_date' => 'required|after_or_equal:today',
             'reservation_time' => 'required',
             'number_of_people' => 'required',
+            'course_id' => 'required',
         ];
     }
     public function messages()
@@ -37,6 +38,7 @@ class ReservationRequest extends FormRequest
             'reservation_date.after_or_equal' => '過去の日時は選択できません',
             'reservation_time.required' => '時間を選択してください',
             'number_of_people.required' => '人数を選択してください',
+            'course_id.required' => 'コースを選択してください'
         ];
     }
     public function withValidator($validator) {

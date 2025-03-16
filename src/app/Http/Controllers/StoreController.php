@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\Area;
 use App\Models\Genre;
-
+use App\Models\Course;
 
 class StoreController extends Controller
 {
@@ -18,7 +18,8 @@ class StoreController extends Controller
     }
     public function detail($store_id) {
         $store = Store::find($store_id);
-        return view('detail', compact('store'));
+        $courses = Course::where('store_id', $store->id)->get();
+        return view('detail', compact('store', 'courses'));
     }
     public function search(Request $request) {
         $area = $request->area;

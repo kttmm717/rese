@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QrCode extends Model
+class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected  $fillable = [
         'store_id',
-        'code',
-        'status',
+        'name',
+        'price',
     ];
 
     public function store() {

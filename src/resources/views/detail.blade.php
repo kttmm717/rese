@@ -52,16 +52,14 @@
                 <p class="error">{{$message}}</p>
             @enderror
             <div class="course__select">
-                <select id="course__select" name="course">
-                    <option value="">価格のコースを選択してください</option>
-                    <option value="1000">1000円</option>
-                    <option value="2000">2000円</option>
-                    <option value="3000">3000円</option>
-                    <option value="4000">4000円</option>
-                    <option value="5000">5000円</option>
+                <select id="course__select" name="course_id" >
+                    <option value="">コースを選択してください</option>
+                    @foreach($courses as $course)
+                    <option value="{{$course->id}}">{{$course->name}} {{$course->price}}円</option>
+                    @endforeach
                 </select>
             </div>
-            @error('course')
+            @error('course_id')
                 <p class="error">{{$message}}</p>
             @enderror
             <table>
@@ -155,7 +153,8 @@
     });
 
     document.getElementById("course__select").addEventListener("change", function() {
-        document.getElementById("course-preview").textContent = this.value ? this.value + "円" : "";
+        const selectedOption = this.options[this.selectedIndex];
+        document.getElementById("course-preview").textContent = selectedOption.textContent;
     });
     
 </script>
