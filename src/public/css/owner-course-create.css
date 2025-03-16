@@ -1,0 +1,75 @@
+.container {
+    width: 90%;
+    margin: 50px auto;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+}
+.course {
+    width: 60%;
+    margin: 50px auto;
+}
+.form {
+    width: 100%;
+}
+h2 {
+    text-align: center;
+    padding-bottom: 70px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.item {
+    padding-bottom: 30px;
+}
+.item__name {
+    font-size: 30px;
+}
+input {
+    border: 1px solid black;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+.btn {
+    text-align: right;
+}
+.btn button {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.delete__btn button {
+    background-color: rgb(253, 69, 69);
+}
+.error {
+    color: red;
+}
+.yen__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.yen {
+    position: absolute;
+    left: 10px;
+}
+.price__input {
+    padding-left: 30px;
+}
+.text {
+    text-align: center;
+    font-size: 30px;
+}
+
+@media(max-width: 768px) {
+    .btn {
+        text-align: center;
+    }
+    .text {
+        font-size: 16px;
+    }
+}

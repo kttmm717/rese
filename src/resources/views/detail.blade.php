@@ -55,7 +55,7 @@
                 <select id="course__select" name="course_id" >
                     <option value="">コースを選択してください</option>
                     @foreach($courses as $course)
-                    <option value="{{$course->id}}">{{$course->name}} {{$course->price}}円</option>
+                    <option value="{{$course->id}}" {{isset($reservation) && $reservation->course_id == $course->id ? 'selected' : ''}}>{{$course->name}} {{$course->price}}円</option>
                     @endforeach
                 </select>
             </div>

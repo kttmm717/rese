@@ -15,7 +15,6 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\StripeController;
 use App\Http\Requests\EmailVerificationRequest;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,8 +39,13 @@ Route::middleware('owner')->group(function() {
     Route::post('/store/create', [OwnerController::class, 'storeCreate']); //店舗作成
     Route::get('/store/update', [OwnerController::class, 'storeUpdateView']); //店舗更新画面表示
     Route::post('/store/update', [OwnerController::class, 'storeUpdate']); //店舗更新
-    Route::get('/owner/notify', [EmailController::class, 'sendEmailView']);
-    Route::post('/owner/notify', [EmailController::class, 'sendEmail']);
+    Route::get('/course/create', [OwnerController::class, 'courseCreateView']); //コース作成画面表示
+    Route::post('/course/create', [OwnerController::class, 'courseCreate']); //コース作成
+    Route::get('/course/update', [OwnerController::class, 'courseUpdateView']); //コース更新画面表示
+    Route::post('/course/update/{course_id}', [OwnerController::class, 'courseUpdate']); //コース更新
+    Route::delete('/course/delete/{course_id}', [OwnerController::class, 'courseDelete']); //コース削除
+    Route::get('/owner/notify', [EmailController::class, 'sendEmailView']); //メール作成画面表示
+    Route::post('/owner/notify', [EmailController::class, 'sendEmail']); //メール送信
 });
 Route::middleware('admin')->group(function() {
     Route::get('/admin/home', [HomeController::class, 'adminHome']); //管理者ホーム
@@ -92,6 +96,6 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::get('/review/{reservation_id}', [ReviewController::class, 'review']); //レビュー画面表示
     Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
 
-    Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']);
-    Route::get('/reservation/verify/{id}', [MypageController::class, 'qrCreate'])->name('reservation.verify');
+    Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']); //QRコード表示
+    Route::get('/reservation/verify/{id}', [MypageController::class, 'qrCreate'])->name('reservation.verify'); //QRコード読み込み
 });

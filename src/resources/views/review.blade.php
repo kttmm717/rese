@@ -41,6 +41,10 @@
                     <th>Number</th>
                     <td>{{$reservation->number_of_people}}人</td>
                 </tr>
+                <tr>
+                    <th>Course</th>
+                    <td>{{$reservation->course->name}} {{$reservation->course->price}}円</td>
+                </tr>
             </table>
             <p class="title">レビュー</p>
             <div class="review__area">

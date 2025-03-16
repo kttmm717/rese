@@ -28,7 +28,7 @@ class StoreRequest extends FormRequest
             'area_id' => 'required',
             'genre_id' => 'required',
             'description' => 'required',
-            'image_path' => 'required',
+            'image' => 'required',
         ];
     }
     public function messages()
@@ -38,7 +38,7 @@ class StoreRequest extends FormRequest
             'area_id.required' => 'エリアを選択してください',
             'genre_id.required' => 'ジャンルを選択してください',
             'description.required' => '店舗説明を入力してください',
-            'image_path.required' => '画像を選択してください', 
+            'image.required' => '画像を選択してください', 
         ];
     }
 }

@@ -35,15 +35,19 @@
                     <table class="reservation">
                         <tr>
                             <th>予約者</th>
-                            <td>{{ $reservation->user->name }}</td>
+                            <td>{{$reservation->user->name}}</td>
                         </tr>
                         <tr>
                             <th>時間</th>
-                            <td>{{ $reservation->reservation_time->format('H:i') }}</td>
+                            <td>{{$reservation->reservation_time->format('H:i')}}</td>
                         </tr>
                         <tr>
                             <th>人数</th>
-                            <td>{{ $reservation->number_of_people }}人</td>
+                            <td>{{$reservation->number_of_people}}人</td>
+                        </tr>
+                        <tr>
+                            <th>コース</th>
+                            <td>{{$reservation->course->name}}</td>
                         </tr>
                     </table>
                 @endforeach
@@ -69,6 +73,10 @@
                             <th>人数</th>
                             <td>{{$todayReservation->number_of_people}}人</td>
                         </tr>
+                        <tr>
+                            <th>コース</th>
+                            <td>{{$todayReservation->course->name}}</td>
+                        </tr>
                     </table>
                 @endforeach
             @endif
@@ -91,6 +99,10 @@
                         <tr>
                             <th>人数</th>
                             <td>{{$tomorrowReservation->number_of_people}}人</td>
+                        </tr>
+                        <tr>
+                            <th>コース</th>
+                            <td>{{$tomorrowReservation->course->name}}</td>
                         </tr>
                     </table>
                 @endforeach

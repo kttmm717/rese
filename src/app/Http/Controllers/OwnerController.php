@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use Carbon\Carbon;
 use App\Http\Requests\StoreRequest;
+use App\Models\Course;
+use App\Http\Requests\CourseRequest;
 
 class OwnerController extends Controller
 {
@@ -30,6 +32,8 @@ class OwnerController extends Controller
                                         ->orderBy('reservation_time')
                                         ->get();
 
+        
+                            
         return view('owner.index', compact('store', 'todayReservations', 'tomorrowReservations'));
     }
     public function search(Request $request) {
@@ -110,5 +114,48 @@ class OwnerController extends Controller
             'owner_id' => Auth::id(),
         ]);
         return redirect('/owner/home')->with('flashSuccess', '店舗情報を更新しました！');
+    }
+    public function courseCreateView() {
+        $store = Store::where('owner_id', Auth::id())->first();
+        
+        if(!$store) {
+            return redirect()->back()->with('flashError', '店舗情報が見つかりません');
+        }
+
+        return view('owner.course-create');
+    }
+    public function courseCreate(CourseRequest $request) {
+        $store = Store::where('owner_id', Auth::id())->first();
+
+        Course::create([
+            'store_id' => $store->id,
+            'name' => $request->name,
+            'price' => $request->price,
+        ]);
+        return redirect('/owner/home')->with('flashSuccess', 'コースを作成しました！');
+    }
+    public function courseUpdateView() {
+        $store = Store::where('owner_id', Auth::id())->first();
+
+        if(!$store) {
+            return redirect()->back()->with('flashError', '店舗情報が見つかりません');
+        }
+
+        $courses = Course::where('store_id', $store->id)->get();
+
+        return view('owner.course-update', compact('courses'));
+    }
+    public function courseUpdate($course_id, CourseRequest $request) {
+        $course = Course::find($course_id);
+
+        $course->update([
+            'name' => $request->name,
+            'price' => $request->price,
+        ]);
+        return redirect()->back()->with('flashSuccess', 'コースを編集しました！');
+    }
+    public function courseDelete($course_id) {
+        Course::find($course_id)->delete();
+        return redirect()->back()->with('flashSuccess', 'コースを削除しました！');
     }
 }

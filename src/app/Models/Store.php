@@ -22,9 +22,6 @@ class Store extends Model
     public function courses() {
         return $this->hasMany(Course::class);
     }
-    public function store_images() {
-        return $this->hasMany(StoreImage::class);
-    }
     public function area() {
         return $this->belongsTo(Area::class);
     }
@@ -42,9 +39,6 @@ class Store extends Model
     }
     public function genre() {
         return $this->belongsTo(Genre::class);
-    }
-    public function qr_code() {
-        return $this->hasOne(QrCode::class);
     }
 
     public function scopeKeywordSearch($query, $keyword) {

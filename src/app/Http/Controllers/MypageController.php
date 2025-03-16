@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use App\Models\Course;
 
 class MypageController extends Controller
 {
@@ -46,14 +47,17 @@ class MypageController extends Controller
     public function changeView($reservation_id) {
         $reservation = Reservation::find($reservation_id);
         $store = Store::find($reservation->store_id);
-        return view('detail', compact('reservation', 'store'));
+        $courses = Course::where('store_id', $store->id)->get();
+        $course = Course::find($reservation->course_id);
+        return view('detail', compact('reservation', 'store', 'courses'));
     }
     public function reservationChange($reservation_id, ReservationRequest $request) {
         $reservation = Reservation::find($reservation_id);
         $reservation->update([
             'reservation_date' => $request->reservation_date,
             'reservation_time' => $request->reservation_time,
-            'number_of_people' => $request->number_of_people
+            'number_of_people' => $request->number_of_people,
+            'course_id' => $request->course_id,
         ]);
         return redirect('/mypage')->with('flashSuccess', '予約を変更しました！');
     }

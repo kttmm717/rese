@@ -12,7 +12,7 @@
     <form class="form" action="/store/create" method="post" enctype="multipart/form-data">
         @csrf
         <h2>店舗作成</h2>
-        @error('image_path')
+        @error('image')
         <p class="error">{{$message}}</p>
         @enderror
         <div class="image">
@@ -25,7 +25,7 @@
 
         <div class="item">
             <p class="item__name">店舗名</p>
-            <input class="item__name--input" type="text" name="name">
+            <input class="item__name--input" type="text" name="name" value="{{old('name')}}">
             @error('name')
             <p class="error">{{$message}}</p>
             @enderror
@@ -39,7 +39,7 @@
                     <option value="{{$area->id}}">{{$area->name}}</option>
                 @endforeach
             </select>
-            @error('area')
+            @error('area_id')
             <p class="error">{{$message}}</p>
             @enderror
         </div>
@@ -52,14 +52,14 @@
                     <option value="{{$genre->id}}">{{$genre->name}}</option>
                 @endforeach
             </select>
-            @error('genre')
+            @error('genre_id')
             <p class="error">{{$message}}</p>
             @enderror
         </div>
 
         <div class="item">
             <p class="item__name">店舗説明</p>
-            <textarea name="description"></textarea>
+            <textarea name="description">{{old('description')}}</textarea>
             @error('description')
             <p class="error">{{$message}}</p>
             @enderror
