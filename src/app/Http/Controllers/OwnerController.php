@@ -70,8 +70,9 @@ class OwnerController extends Controller
     }
     public function storeCreate(StoreRequest $request) {
         $file = $request->file('image');
+
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/img', $fileName);
+        $file->storeAs('img', $fileName, 's3');
 
         $image_path =  'img/' . $fileName;
 
@@ -98,8 +99,9 @@ class OwnerController extends Controller
     }
     public function storeUpdate(StoreRequest $request) {
         $file = $request->file('image');
+
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/img', $fileName);
+        $file->storeAs('img', $fileName, 's3');
 
         $image_path =  'img/' . $fileName;
 

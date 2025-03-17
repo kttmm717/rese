@@ -47,7 +47,6 @@
 ```
 make init
 ```
-
 ## テストアカウント
 name: 一般ユーザー1  
 email: user1@gmail.com  
@@ -61,3 +60,11 @@ name: 管理者
 email: admin@gmail.com  
 password: password
 
+## Stripeについて
+.envファイルに以下のようにStripeのAPIキー設定をお願いします。
+```
+STRIPE_PUBLIC_KEY="パブリックキー"
+STRIPE_SECRET_KEY="シークレットキー"
+```
+以下のリンクは公式ドキュメントです。<br>
+https://docs.stripe.com/payments/checkout?locale=ja-JP

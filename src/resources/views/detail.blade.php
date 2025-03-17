@@ -18,7 +18,7 @@
             @endif
             <p>{{$store->name}}</p>
         </div>
-        <img src="{{\Storage::url($store->image_path)}}">
+        <img src="{{Storage::disk('s3')->url($store->image_path)}}">
         <div class="hash">
             <p>#{{$store->area->name}}</p>
             <p>#{{$store->genre->name}}</p>
