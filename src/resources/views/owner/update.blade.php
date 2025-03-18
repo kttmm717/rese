@@ -19,7 +19,7 @@
             <div class="image__preview"></div>
             <label>
                 画像を選択する
-                <input id="input-file" class="input__file" type="file" name="image" value="{{Storage::disk('s3')->url($store->image_path)}}">
+                <input id="input-file" class="input__file" type="file" name="image" value="{{\Storage::url($store->image_path)}}">
             </label>
         </div>
 

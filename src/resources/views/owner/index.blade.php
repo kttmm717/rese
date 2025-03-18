@@ -12,7 +12,7 @@
         <a class="logo" href="/owner/home">Rese</a>
         <div class="store__info">
             <p class="store__name">{{$store->name}}</p>
-            <img src="{{Storage::disk('s3')->url($store->image_path)}}">
+            <img src="{{\Storage::url($store->image_path)}}">
         </div>
     </div>
 

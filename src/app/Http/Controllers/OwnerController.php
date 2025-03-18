@@ -72,7 +72,7 @@ class OwnerController extends Controller
         $file = $request->file('image');
 
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('img', $fileName, 's3');
+        $file->storeAs('public/img', $fileName);
 
         $image_path =  'img/' . $fileName;
 
@@ -101,7 +101,7 @@ class OwnerController extends Controller
         $file = $request->file('image');
 
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('img', $fileName, 's3');
+        $file->storeAs('public/img', $fileName);
 
         $image_path =  'img/' . $fileName;
 
