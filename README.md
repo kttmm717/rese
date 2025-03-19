@@ -69,3 +69,4 @@ STRIPE_SECRET_KEY="シークレットキー"
 以下のリンクは公式ドキュメントです。<br>
 https://docs.stripe.com/payments/checkout?locale=ja-JP
 # restaurant-reservation-production
+# restaurant-reservation-production

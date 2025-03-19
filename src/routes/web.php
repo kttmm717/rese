@@ -99,3 +99,4 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']); //QRコード表示
     Route::get('/reservation/verify/{id}', [MypageController::class, 'qrCreate'])->name('reservation.verify'); //QRコード読み込み
 });
+

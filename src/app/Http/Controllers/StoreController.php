@@ -7,11 +7,14 @@ use App\Models\Store;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Course;
+use Illuminate\Support\Facades\Log;
 
 class StoreController extends Controller
 {
     public function index() {
+        
         $stores = Store::all();
+        Log::debug($stores->toArray());
         $areas = Area::all();
         $genres = Genre::all();
         return view('index', compact('stores', 'areas', 'genres'));
