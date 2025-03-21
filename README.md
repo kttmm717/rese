@@ -1,5 +1,5 @@
 # Rese（リーズ）
-- 飲食店予約サービス
+- 飲食店予約サービス管理アプリ
 - トップ画面の画像
 ![alt](ReseTop.jpg)
 
@@ -7,13 +7,28 @@
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたいため。
 
 ## アプリケーションURL
-- 開発環境：http://localhost/
-- phpMyAdmin：http://localhost:8080/
-- 一般ユーザーログイン：http://localhost/login
-- 店舗代表者ログイン：http://localhost/owner/login
-- 管理者ログイン：http://localhost/admin/login
+- トップ画面：https://rese0717.com/
+- 一般ユーザーログイン：https://rese0717.com/login
+- 店舗代表者ログイン：https://rese0717.com/owner/login
+- 管理者ログイン：https://rese0717.com/admin/login
+- phpMyAdmin：http://<EC2のパブリックIP>:8080
 
+※phpMyAdmin の URL では、<EC2のパブリックIP> を実際の IP アドレスに置き換えて記載してください。<br>
 ※ログインの際は下記テストアカウントを使用してください。
+
+## テストアカウント
+- name: 一般ユーザー1  
+  - email: user1@gmail.com  
+  - password: password  
+
+- name: 仙人店舗代表者  
+  - email: owner1@gmail.com  
+  - password: password  
+
+- name: 管理者  
+  - email: admin@gmail.com  
+  - password: password
+
 ## 機能一覧
 - 会員登録
 - ログイン
@@ -31,9 +46,19 @@
 - 店名で検索する
 
 ## 使用技術
-- Laravel：8.83.29
-- PHP：7.4.9
-- mysql：8.0.26
+- **バックエンド**：Laravel 8.83.29 (PHP 7.4.9)
+- **フロントエンド**：Blade / Tailwind CSS
+- **インフラ**：
+  - AWS EC2（Ubuntu 24.04 LTS）
+  - RDS（MySQL 8.0.40）
+  - S3（画像保存）
+  - Let's Encrypt（SSL化）
+- **コンテナ管理**：Docker / docker-compose
+- **Webサーバー**：Nginx
+- **認証機能**：Laravel Fortify
+- **その他ツール**：
+  - VSCode（EC2リモート開発）
+  - Git / GitHub
 
 ## テーブル設計
 ![alt](table.jpg)
@@ -41,35 +66,19 @@
 ## ER図
 ![alt](er.png)
 
-## 環境構築
-1. Dockerを起動する
-2. プロジェクト直下で、以下のコマンドを実行する
+## セットアップ手順（開発環境）
 ```
-make init
+git clone git@github.com:kttmm717/restaurant-reservation-production.git
+cd restaurant-reservation-production
+cp .env.example .env
+docker-compose exec php bash
+composer install
+php artisan key:generate
+php artisan migrate --seed
+npm install && npm run dev
+php artisan serve
 ```
-## テストアカウント
-name: 一般ユーザー1  
-email: user1@gmail.com  
-password: password  
-
-name: 仙人店舗代表者  
-email: owner1@gmail.com  
-password: password  
-
-name: 管理者  
-email: admin@gmail.com  
-password: password
-
-## Stripeについて
-.envファイルに以下のようにStripeのAPIキー設定をお願いします。
-```
-STRIPE_PUBLIC_KEY="パブリックキー"
-STRIPE_SECRET_KEY="シークレットキー"
-```
-以下のリンクは公式ドキュメントです。<br>
-https://docs.stripe.com/payments/checkout?locale=ja-JP
-# restaurant-reservation-production
-# restaurant-reservation-production
-# restaurant-reservation-production
-# restaurant-reservation-production
-# restaurant-reservation-production
+.env.exampleを.envにコピー後、以下を環境に合わせて入力してください
+- DB情報
+- AWS情報
+- Stripe APIキー
