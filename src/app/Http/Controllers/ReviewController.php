@@ -11,7 +11,7 @@ use App\Http\Requests\ReviewRequest;
 class ReviewController extends Controller
 {
     public function review($reservation_id) {
-        $reservation = Reservation::find($reservation_id);
+        $reservation = Reservation::findOrFail($reservation_id);
         $store = Store::find($reservation->store_id);
         $user = Auth::user();
         return view('review', compact('reservation', 'store', 'user'));
@@ -27,5 +27,10 @@ class ReviewController extends Controller
         $reservation->delete();
 
         return redirect('/mypage')->with('flashSuccess', 'レビューを投稿しました！');
+    }
+    public function reviewStore($store_id) {
+        $store = Store::find($store_id);
+        $reviews = Review::where('store_id', $store->id)->get();
+        return view('review-store', compact('store', 'reviews'));
     }
 }

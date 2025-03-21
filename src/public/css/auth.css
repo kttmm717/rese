@@ -24,6 +24,7 @@
     width: 80%;
     margin: 0 auto;
     padding: 50px 0;
+    text-align: center;
 }
 .button {
     text-align: right;
@@ -40,6 +41,7 @@ input {
     width: 80%;
     padding: 5px 10px;
     font-size: 30px;
+    text-align: left;
 }
 .email,
 .password,
@@ -60,8 +62,19 @@ input {
     }
     .button {
         text-align: center;
+    } 
+    .icon {
+        font-size: 30px;
     }
-    .login {
+    .container {
         width: 90%;
+        margin: 10px auto;
+    }
+    .title {
+        padding: 10px;
+    }
+    .form {
+        width: 90%;
+        text-align: center;
     }
 }

@@ -35,4 +35,8 @@
     .link {
         font-size: 10px;
     }
+    .container {
+        width: 90%;
+        margin: 50px auto;
+    }
 }

@@ -92,6 +92,7 @@ td {
     margin-top: 140px;
     padding: 10px;
     cursor: pointer;
+    border-radius: 3px;
 }
 .button button {
     width: 100%;
@@ -123,6 +124,16 @@ td {
 .error {
     color: white;
     padding-bottom: 10px;
+}
+.review__btn {
+    display: block;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 3px;
 }
 
 @media(max-width: 768px) {

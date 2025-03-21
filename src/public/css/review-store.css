@@ -1,0 +1,58 @@
+.container {
+    width: 90%;
+    margin: 50px auto;
+}
+.logo {
+    color: blue;
+    font-weight: bold;
+    font-size: 40px;
+}
+img {
+    width: 40%;
+}
+.store__info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.store__name {
+    font-weight: bold;
+    font-size: 40px;
+}
+.rese__title {
+    font-size: 20px;
+}
+.review__title {
+    font-size: 30px;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.evaluation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.evaluation span {
+    font-size: 26px;
+    display: inline-block;
+    margin-right: 16px;
+}
+.item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.user__name {
+    padding-bottom: 10px;
+}
+.text {
+    padding: 20px;
+    font-size: 20px;
+}
+.star.checked {
+    color: orange;
+}
+.star {
+    color: gray;
+}

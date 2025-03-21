@@ -13,14 +13,14 @@
     <form class="form" action="/admin/login" method="post">
         @csrf
         <div class="email">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope icon"></i>
             <input type="text" name="email" placeholder="Email" value="{{old('email')}}">
             @error('email')
             <p class="error">{{$message}}</p>
             @enderror
         </div>
         <div class="password">
-            <i class="fas fa-lock"></i>
+            <i class="fas fa-lock icon"></i>
             <input type="password" name="password" placeholder="Password">
             @error('password')
             <p class="error">{{$message}}</p>

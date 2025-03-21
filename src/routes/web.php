@@ -76,6 +76,7 @@ Route::get('/', [StoreController::class, 'index']); //店舗一覧
 Route::get('/detail/{store_id}', [StoreController::class, 'detail']); //店舗詳細
 Route::get('/home', [HomeController::class, 'home']); //ホーム
 Route::get('/search', [StoreController::class, 'search']); //検索
+Route::get('/review/store/{store_id}', [ReviewController::class, 'reviewStore']); //お店のレビュー一覧表示
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
@@ -88,15 +89,15 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::post('/stripe/{store_id}', [StripeController::class, 'stripe']); //決済接続
     Route::get('/stripe/{store_id}/success', [StripeController::class, 'success']); //決済成功、予約作成
 
-    Route::get('change/{reservation_id}', [MypageController::class, 'changeView']); //予約変更
-    Route::post('change/{reservation_id}', [MypageController::class, 'reservationChange']); //予約変更完了
+    Route::get('/change/{reservation_id}', [MypageController::class, 'changeView']); //予約変更
+    Route::post('/change/{reservation_id}', [MypageController::class, 'reservationChange']); //予約変更完了
     Route::delete('/delete/{reservation_id}', [MypageController::class, 'delete']); //予約削除
 
-    Route::delete('review/delete/{reservation_id}', [MypageController::class, 'reviewDelete']); //レビュー欄削除
+    Route::delete('/review/delete/{reservation_id}', [MypageController::class, 'reviewDelete']); //レビュー欄削除
     Route::get('/review/{reservation_id}', [ReviewController::class, 'review']); //レビュー画面表示
     Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
 
     Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']); //QRコード表示
-    Route::get('/reservation/verify/{id}', [MypageController::class, 'qrCreate'])->name('reservation.verify'); //QRコード読み込み
+    Route::get('/qr/used/{id}', [MypageController::class, 'qrCreate'])->name('qr'); //QRコード読み込み
 });
 

@@ -3,7 +3,7 @@
 @section('title', 'QRコード読み込み完了')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('css/index.css')}}">
+<link rel="stylesheet" href="{{asset('css/qrcode.css')}}">
 @endsection
 
 @section('content')

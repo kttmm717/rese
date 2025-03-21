@@ -8,6 +8,7 @@
 
 ## アプリケーションURL
 - トップ画面：https://rese0717.com/
+- 新規登録画面：https://rese0717.com/register
 - 一般ユーザーログイン：https://rese0717.com/login
 - 店舗代表者ログイン：https://rese0717.com/owner/login
 - 管理者ログイン：https://rese0717.com/admin/login

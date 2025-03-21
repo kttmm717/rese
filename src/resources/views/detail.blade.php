@@ -24,6 +24,7 @@
             <p>#{{$store->genre->name}}</p>
         </div>
         <p>{{$store->description}}</p>
+        <a href="/review/store/{{$store->id}}" class="review__btn">このお店のレビューをみる</a>
     </div>
 
     <div class="right">

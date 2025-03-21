@@ -5,6 +5,8 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('css/review.css')}}">
 @endsection
+
+@section('content')
 <div class="container">
     <div class="left">
         <a class="logo" href="/home">Rese</a>
@@ -88,4 +90,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-@section('content')
+@endsection
