@@ -14,14 +14,13 @@ class StoreController extends Controller
     public function index() {
         
         $stores = Store::all();
-        Log::debug($stores->toArray());
         $areas = Area::all();
         $genres = Genre::all();
         return view('index', compact('stores', 'areas', 'genres'));
     }
     public function detail($store_id) {
         $store = Store::find($store_id);
-        $courses = Course::where('store_id', $store->id)->get();
+        $courses = Course::where('store_id', $store_id)->get();
         return view('detail', compact('store', 'courses'));
     }
     public function search(Request $request) {

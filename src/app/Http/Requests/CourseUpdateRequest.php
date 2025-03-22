@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseRequest extends FormRequest
+class CourseUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class CourseRequest extends FormRequest
             'name' => 'required',
             'price' => 'required|integer|min:1',
             'description' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'nullable',
         ];
     }
     public function messages()
@@ -39,7 +39,6 @@ class CourseRequest extends FormRequest
             'price.min' => 'コース価格は1円以上で入力してください',
             'description.reuired' => 'コース説明を入力してください',
             'description.max' => 'コース説明は255以内で入力してください',
-            'image.required' => '画像を選択してください',
         ];
     }
 }

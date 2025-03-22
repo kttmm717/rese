@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use App\Http\Requests\StoreRequest;
 use App\Models\Course;
 use App\Http\Requests\CourseRequest;
+use App\Http\Requests\CourseUpdateRequest;
+use App\Http\Requests\StoreUpdateRequest;
 
 class OwnerController extends Controller
 {
@@ -68,12 +70,10 @@ class OwnerController extends Controller
         $genres = Genre::all();
         return view('owner/create', compact('areas', 'genres'));
     }
-    public function storeCreate(StoreRequest $request) {
+    public function storeCreate(StoreRequest $request) {        
         $file = $request->file('image');
-
         $fileName = time() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('img', $fileName, 's3');
-
         $image_path =  'img/' . $fileName;
 
         Store::create([
@@ -97,15 +97,17 @@ class OwnerController extends Controller
 
         return view('owner.update', compact('store', 'areas', 'genres'));
     }
-    public function storeUpdate(StoreRequest $request) {
-        $file = $request->file('image');
-
-        $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('img', $fileName, 's3');
-
-        $image_path =  'img/' . $fileName;
-
+    public function storeUpdate(StoreUpdateRequest $request) {
         $store = Store::where('owner_id', Auth::id())->first();
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . '.' .  $file->getClientOriginalExtension();
+            $file->storeAs('img/', $fileName, 's3');
+            $image_path = 'img/' . $fileName;
+        }else {
+            $image_path = $store->image_path;
+        }
 
         $store->update([
             'name' => $request->name,
@@ -129,10 +131,17 @@ class OwnerController extends Controller
     public function courseCreate(CourseRequest $request) {
         $store = Store::where('owner_id', Auth::id())->first();
 
+        $file = $request->file('image');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('img', $fileName, 's3');
+        $image_path =  'img/' . $fileName;
+
         Course::create([
             'store_id' => $store->id,
             'name' => $request->name,
             'price' => $request->price,
+            'description' => $request->description,
+            'image_path' => $image_path,
         ]);
         return redirect('/owner/home')->with('flashSuccess', 'コースを作成しました！');
     }
@@ -147,12 +156,23 @@ class OwnerController extends Controller
 
         return view('owner.course-update', compact('courses'));
     }
-    public function courseUpdate($course_id, CourseRequest $request) {
+    public function courseUpdate(CourseUpdateRequest $request, $course_id) {
         $course = Course::find($course_id);
-
+        
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('img', $fileName, 's3');
+            $image_path = 'img/' . $fileName;
+        }else {
+            $image_path = $course->image_path;
+        }
+ 
         $course->update([
             'name' => $request->name,
             'price' => $request->price,
+            'description' => $request->description,
+            'image_path' => $image_path,
         ]);
         return redirect()->back()->with('flashSuccess', 'コースを編集しました！');
     }

@@ -12,11 +12,13 @@
     <form class="form" action="/store/update" method="post" enctype="multipart/form-data">
         @csrf
         <h2>店舗情報編集</h2>
-        @error('image_path')
+        @error('image')
         <p class="error">{{$message}}</p>
         @enderror
         <div class="image">
-            <div class="image__preview"></div>
+            <div class="image__preview">
+                <img src="{{Storage::disk('s3')->url($store->image_path)}}">
+            </div>
             <label>
                 画像を選択する
                 <input id="input-file" class="input__file" type="file" name="image" value="{{\Storage::url($store->image_path)}}">

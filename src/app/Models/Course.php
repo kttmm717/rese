@@ -13,6 +13,8 @@ class Course extends Model
         'store_id',
         'name',
         'price',
+        'description',
+        'image_path',
     ];
 
     public function store() {

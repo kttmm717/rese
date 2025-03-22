@@ -39,7 +39,9 @@
     <div class="stores">
         @foreach($stores as $store)
             <div class="store">
-                <img src="{{Storage::disk('s3')->url($store->image_path)}}" alt="Store Image">
+                <div class="store__img">
+                    <img src="{{Storage::disk('s3')->url($store->image_path)}}" alt="Store Image">
+                </div>
                 <div class="store__info">
                     <p class="store__name">{{$store->name}}</p>
                     <div class="hash">

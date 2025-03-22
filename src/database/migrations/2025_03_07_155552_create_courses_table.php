@@ -18,6 +18,8 @@ class CreateCoursesTable extends Migration
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->integer('price');
+            $table->string('description');
+            $table->string('image_path');
             $table->timestamps();
         });
     }
