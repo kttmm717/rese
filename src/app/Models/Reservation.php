@@ -16,6 +16,7 @@ class Reservation extends Model
         'reservation_time',
         'number_of_people',
         'course_id',
+        'is_visited',
     ];
     protected $casts = [
         'reservation_date' => 'date',

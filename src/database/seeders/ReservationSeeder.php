@@ -38,6 +38,7 @@ class ReservationSeeder extends Seeder
                 'reservation_time' => '12:00:00',
                 'number_of_people' => 4,
                 'course_id' => 5,
+                'is_visited' => true,
             ],
             [
                 'user_id' => 23,
@@ -62,6 +63,7 @@ class ReservationSeeder extends Seeder
                 'reservation_time' => '12:00:00',
                 'number_of_people' => 4,
                 'course_id' => 1,
+                'is_visited' => true,
             ],
             [
                 'user_id' => 24,

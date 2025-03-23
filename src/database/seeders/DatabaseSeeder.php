@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reservation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaSeeder::class);
         $this->call(GenreSeeder::class);
         $this->call(StoreSeeder::class);
-        $this->call(CourseSedder::class);
+        $this->call(CourseSeeder::class);
         $this->call(ReservationSeeder::class);
         $this->call(LikeSeeder::class);
+        \App\Models\Review::factory()->count(70)->create();
     }
 }

@@ -21,6 +21,7 @@ class CreateReservationsTable extends Migration
             $table->time('reservation_time');
             $table->integer('number_of_people');
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
+            $table->boolean('is_visited')->default(false);
             $table->timestamps();
         });
     }

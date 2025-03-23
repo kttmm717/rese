@@ -77,6 +77,8 @@ Route::get('/detail/{store_id}', [StoreController::class, 'detail']); //店舗�
 Route::get('/home', [HomeController::class, 'home']); //ホーム
 Route::get('/search', [StoreController::class, 'search']); //検索
 Route::get('/review/store/{store_id}', [ReviewController::class, 'reviewStore']); //お店のレビュー一覧表示
+Route::get('/qr/used/{id}', [MypageController::class, 'qrRead'])->name('qr'); //QRコード読み込み
+Route::post('/reservation/visited/{reservation_id}', [MypageController::class, 'qrVisited']); //来店確認
 
 Route::middleware('auth', 'verified')->group(function() {
     Route::get('/thanks', [ThanksController::class, 'thanks']); //会員登録感謝
@@ -98,6 +100,5 @@ Route::middleware('auth', 'verified')->group(function() {
     Route::post('/review/create/{store_id}', [ReviewController::class, 'reviewCreate']); //レビュー作成
 
     Route::get('/qr/{reservation_id}', [MypageController::class, 'qrView']); //QRコード表示
-    Route::get('/qr/used/{id}', [MypageController::class, 'qrCreate'])->name('qr'); //QRコード読み込み
 });
 

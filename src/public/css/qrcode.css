@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    margin: 200px auto;
+    margin: 100px auto;
     text-align: center;
 }
 p {
@@ -13,6 +13,23 @@ p {
     font-size: 40px;
     padding: 50px;
     display: inline-block;
+}
+table {
+    width: 80%;
+    margin: 50px auto;
+}
+th,td {
+    padding: 10px;
+    border: 1px solid black;
+}
+button {
+    display: block;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 @media(max-width: 768px) {
