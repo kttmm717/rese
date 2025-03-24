@@ -71,7 +71,10 @@
 ```
 git clone git@github.com:kttmm717/restaurant-reservation-production.git
 cd restaurant-reservation-production
+cd src
 cp .env.example .env
+cd ../
+docker-compose up -d --build
 docker-compose exec php bash
 composer install
 php artisan key:generate
@@ -82,4 +85,19 @@ php artisan serve
 .env.exampleを.envにコピー後、以下を環境に合わせて入力してください
 - DB情報
 - AWS情報
+- MAIL情報
 - Stripe APIキー
+
+## メール認証
+mailtrapというツールを使用しています。<br>
+以下のリンクから会員登録をしてください。　<br>
+https://mailtrap.io/
+
+メールボックスのIntegrationsから 「laravel 7.x and 8.x」を選択し、　<br>
+.envファイルのMAIL_MAILERからMAIL_ENCRYPTIONまでの項目をコピー＆ペーストしてください。　<br>
+MAIL_FROM_ADDRESSは任意のメールアドレスを入力してください。
+
+## その他
+- 各ページの左上の青文字RESEのロゴをクリックすると、各ページに飛べるHOME画面に遷移します。
+- 評価機能について、予約日の翌日以降から、利用者が店舗を５段階評価とコメントのレビューができるようになります。
+- 予約削除機能について、マイページの各予約（青背景）の右上バツをクリックすると予約削除ができます。

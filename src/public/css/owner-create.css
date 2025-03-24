@@ -88,6 +88,9 @@ textarea {
     .btn {
         text-align: center;
     }
+    .btn button {
+        width: 100%;
+    }
     .image__preview {
         width: 100%;
         margin-bottom: 30px;
