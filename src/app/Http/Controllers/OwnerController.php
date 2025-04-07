@@ -70,10 +70,10 @@ class OwnerController extends Controller
         $genres = Genre::all();
         return view('owner/create', compact('areas', 'genres'));
     }
-    public function storeCreate(StoreRequest $request) {        
+    public function storeCreate(StoreRequest $request) {
         $file = $request->file('image');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('img', $fileName, 's3');
+        $file->storeAs('public/img', $fileName);
         $image_path =  'img/' . $fileName;
 
         Store::create([
@@ -102,9 +102,9 @@ class OwnerController extends Controller
 
         if($request->hasFile('image')) {
             $file = $request->file('image');
-            $fileName = time() . '.' .  $file->getClientOriginalExtension();
-            $file->storeAs('img/', $fileName, 's3');
-            $image_path = 'img/' . $fileName;
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/img', $fileName);
+            $image_path =  'img/' . $fileName;
         }else {
             $image_path = $store->image_path;
         }
@@ -133,7 +133,7 @@ class OwnerController extends Controller
 
         $file = $request->file('image');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('img', $fileName, 's3');
+        $file->storeAs('public/img', $fileName);
         $image_path =  'img/' . $fileName;
 
         Course::create([
@@ -162,8 +162,8 @@ class OwnerController extends Controller
         if($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('img', $fileName, 's3');
-            $image_path = 'img/' . $fileName;
+            $file->storeAs('public/img', $fileName);
+            $image_path =  'img/' . $fileName;
         }else {
             $image_path = $course->image_path;
         }

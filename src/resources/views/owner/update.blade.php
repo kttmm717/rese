@@ -17,7 +17,7 @@
         @enderror
         <div class="image">
             <div class="image__preview">
-                <img src="{{Storage::disk('s3')->url($store->image_path)}}">
+                <img src="{{\Storage::url($store->image_path)}}" alt="Store Image">
             </div>
             <label>
                 画像を選択する

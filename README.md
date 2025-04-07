@@ -7,14 +7,13 @@
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたいため。
 
 ## アプリケーションURL
-- トップ画面：https://rese0717.com/
-- 新規登録画面：https://rese0717.com/register
-- 一般ユーザーログイン：https://rese0717.com/login
-- 店舗代表者ログイン：https://rese0717.com/owner/login
-- 管理者ログイン：https://rese0717.com/admin/login
-- phpMyAdmin：http://<EC2のパブリックIP>:8080
+- トップ画面：http://localhost
+- 新規登録画面：http://localhost/register
+- 一般ユーザーログイン：http://localhost/login
+- 店舗代表者ログイン：http://localhost/owner/login
+- 管理者ログイン：http://localhost/admin/login
+- phpMyAdmin：http://localhost:8080
 
-※phpMyAdmin の URL では、<EC2のパブリックIP> を実際の IP アドレスに置き換えて記載してください。<br>
 ※ログインの際は下記テストアカウントを使用してください。
 
 ## テストアカウント
@@ -47,19 +46,9 @@
 - 店名で検索する
 
 ## 使用技術
-- **バックエンド**：Laravel 8.83.29 (PHP 7.4.9)
-- **フロントエンド**：Blade / Tailwind CSS
-- **インフラ**：
-  - AWS EC2（Ubuntu 24.04 LTS）
-  - RDS（MySQL 8.0.40）
-  - S3（画像保存）
-  - Let's Encrypt（SSL化）
-- **コンテナ管理**：Docker / docker-compose
-- **Webサーバー**：Nginx
-- **認証機能**：Laravel Fortify
-- **その他ツール**：
-  - VSCode（EC2リモート開発）
-  - Git / GitHub
+- Laravel：8.83.29
+- PHP：7.4.9
+- mysql：8.0.26
 
 ## テーブル設計
 ![alt](table.jpg)
@@ -68,25 +57,25 @@
 ![alt](er.png)
 
 ## セットアップ手順（開発環境）
+Dockerビルド  
+1.git clone git@github.com:kttmm717/restaurant-reservation-production.git  
+2.docker-compose up -d --build  
+
+Lavaral環境構築  
+1.docker-compose exec php bash  
+2.composer install  
+3.cp .env.example .env  
+4..envファイルの変更  
 ```
-git clone git@github.com:kttmm717/restaurant-reservation-production.git
-cd restaurant-reservation-production
-cd src
-cp .env.example .env
-cd ../
-docker-compose up -d --build
-docker-compose exec php bash
-composer install
-php artisan key:generate
-php artisan migrate --seed
-npm install && npm run dev
-php artisan serve
+　DB_HOSTをmysqlに変更  
+　DB_DATABASEをlaravel_dbに変更  
+　DB_USERNAMEをlaravel_userに変更  
+　DB_PASSをlaravel_passに変更  
+　MAIL_FROM_ADDRESSに送信元アドレスを設定  
 ```
-.env.exampleを.envにコピー後、以下を環境に合わせて入力してください
-- DB情報
-- AWS情報
-- MAIL情報
-- Stripe APIキー
+5.php artisan key:generate  
+6.php artisan migrate  
+7.php artisan db:seed  
 
 ## メール認証
 mailtrapというツールを使用しています。<br>

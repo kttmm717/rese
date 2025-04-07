@@ -20,7 +20,7 @@
                 <p>{{$store->name}}</p>
             </div>
             <div class="img">
-                <img src="{{Storage::disk('s3')->url($store->image_path)}}">
+                <img src="{{\Storage::url($store->image_path)}}">
             </div>
             <div class="hash">
                 <p>#{{$store->area->name}}</p>
@@ -37,7 +37,7 @@
                 <input type="hidden" name="id" value="{{$store->id}}">
                 <input id="date-input" type="date" name="reservation_date" value="{{$reservation ?? false ? $reservation->reservation_date->format('Y-m-d') : ''}}">
                 @error('reservation_date')
-                    <p class="error">{{$message}}</p>
+                <p class="error">{{$message}}</p>
                 @enderror
                 <div class="time__select">
                     <select id="time-select" name="reservation_time" data-reservation-time="{{isset($reservation) ? $reservation->reservation_time->format('H:i') : ''}}">
@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 @error('reservation_time')
-                    <p class="error">{{$message}}</p>
+                <p class="error">{{$message}}</p>
                 @enderror
                 <div class="number__select">
                     <select id="number-select" name="number_of_people" data-reservation-number="{{isset($reservation) ? $reservation->number_of_people.'人' : ''}}">
@@ -53,10 +53,10 @@
                     </select>
                 </div>
                 @error('number_of_people')
-                    <p class="error">{{$message}}</p>
+                <p class="error">{{$message}}</p>
                 @enderror
                 <div class="course__select">
-                    <select id="course__select" name="course_id" >
+                    <select id="course__select" name="course_id">
                         <option value="">コースを選択してください</option>
                         @foreach($courses as $course)
                         <option value="{{$course->id}}" {{isset($reservation) && $reservation->course_id == $course->id ? 'selected' : ''}}>{{$course->name}} {{$course->price}}円</option>
@@ -64,7 +64,7 @@
                     </select>
                 </div>
                 @error('course_id')
-                    <p class="error">{{$message}}</p>
+                <p class="error">{{$message}}</p>
                 @enderror
                 <table>
                     <tr>
@@ -100,25 +100,25 @@
                 <div class="button disabled">
                     <button disabled>予約する</button>
                 </div>
-                @endif            
+                @endif
                 <p class="text">※ログインがお済みでない方はログインしてから予約をしてください</p>
             </form>
         </div>
     </div>
     <div class="cources">
         @if($courses->isEmpty())
-            <p>現在このお店のコースは設定されていません</p>
+        <p>現在このお店のコースは設定されていません</p>
         @else
-            <p class="cource__title">コース一覧</p>
-            @foreach($courses as $course)
-                <div class="cource">
-                    <p class="cource__name">{{$course->name}}</p>
-                    <p class="cource__description">{{$course->description}}</p>
-                    <div class="cource__img">
-                        <img src="{{Storage::disk('s3')->url($course->image_path)}}">
-                    </div>
-                </div>
-            @endforeach
+        <p class="cource__title">コース一覧</p>
+        @foreach($courses as $course)
+        <div class="cource">
+            <p class="cource__name">{{$course->name}}</p>
+            <p class="cource__description">{{$course->description}}</p>
+            <div class="cource__img">
+                <img src="{{\Storage::url($course->image_path)}}">
+            </div>
+        </div>
+        @endforeach
         @endif
     </div>
 </div>
@@ -131,11 +131,11 @@
 
         for (let hour = 10; hour <= 24; hour++) {
             for (let min of ['00', '30']) {
-                if(hour === 24 && min === '30') break;
+                if (hour === 24 && min === '30') break;
                 const time = `${hour}:${min}`;
                 const option = new Option(time, time);
 
-                if(time === reservedTime) {
+                if (time === reservedTime) {
                     option.selected = true;
                 }
 
@@ -148,18 +148,18 @@
         const numberSelect = document.getElementById('number-select');
         const reservedNumber = numberSelect.dataset.reservationNumber.trim();
 
-        for(let i=1; i<=50; i++) {
+        for (let i = 1; i <= 50; i++) {
             const number = `${i}人`;
             const option = new Option(number, i);
 
-            if(number === reservedNumber) {
+            if (number === reservedNumber) {
                 option.selected = true;
             }
 
             numberSelect.appendChild(option);
         }
     });
-    
+
 
     document.getElementById("date-input").addEventListener("input", function() {
         document.getElementById("date-preview").textContent = this.value;
@@ -177,6 +177,5 @@
         const selectedOption = this.options[this.selectedIndex];
         document.getElementById("course-preview").textContent = selectedOption.textContent;
     });
-    
 </script>
 @endsection

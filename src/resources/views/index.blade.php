@@ -38,29 +38,29 @@
 
     <div class="stores">
         @foreach($stores as $store)
-            <div class="store">
-                <div class="store__img">
-                    <img src="{{Storage::disk('s3')->url($store->image_path)}}" alt="Store Image">
+        <div class="store">
+            <div class="store__img">
+                <img src="{{ \Storage::url($store->image_path) }}">
+            </div>
+            <div class="store__info">
+                <p class="store__name">{{$store->name}}</p>
+                <div class="hash">
+                    <p>#{{$store->area->name}}</p>
+                    <p>#{{$store->genre->name}}</p>
                 </div>
-                <div class="store__info">
-                    <p class="store__name">{{$store->name}}</p>
-                    <div class="hash">
-                        <p>#{{$store->area->name}}</p>
-                        <p>#{{$store->genre->name}}</p>
-                    </div>
-                    <div class="icon">
-                        <a class="link" href="/detail/{{$store->id}}">詳しくみる</a>
-                        <form action="{{$store->liked() ? '/unlike/'.$store->id : '/like/'.$store->id}}" method="post">
-                            @csrf
-                            @if($store->liked())
-                                <button><i class="fas fa-heart like"></i></button>
-                            @else
-                                <button><i class="fas fa-heart unlike"></i></button>
-                            @endif
-                        </form>
-                    </div>
+                <div class="icon">
+                    <a class="link" href="/detail/{{$store->id}}">詳しくみる</a>
+                    <form action="{{$store->liked() ? '/unlike/'.$store->id : '/like/'.$store->id}}" method="post">
+                        @csrf
+                        @if($store->liked())
+                        <button><i class="fas fa-heart like"></i></button>
+                        @else
+                        <button><i class="fas fa-heart unlike"></i></button>
+                        @endif
+                    </form>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
 </div>
@@ -69,27 +69,27 @@
         const container = document.querySelector(".stores");
         const stores = Array.from(container.children).filter(el => el.matches("div"));
 
-        if(stores.length === 0) return;
+        if (stores.length === 0) return;
 
         const existingDummy = container.querySelector(".dummy-space");
-        
-        if(existingDummy) {
+
+        if (existingDummy) {
             existingDummy.remove();
-        }        
+        }
         const containerWidth = container.clientWidth;
         let rowStores = [];
         let rowWidth = 0;
 
-        for(const store of stores) {
+        for (const store of stores) {
             const storeWidth = store.offsetWidth;
-            if(rowWidth + storeWidth > containerWidth) {
+            if (rowWidth + storeWidth > containerWidth) {
                 rowStores = [];
                 rowWidth = 0;
             }
             rowStores.push(store);
             rowWidth += storeWidth;
         }
-        if(rowStores.length > 0) {
+        if (rowStores.length > 0) {
             const dummy = document.createElement("div");
             dummy.classList.add("dummy-space");
             dummy.style.flex = "1 1 auto";

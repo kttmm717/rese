@@ -8,7 +8,7 @@ RUN apt update && apt-get upgrade -y \
     && docker-php-ext-install pdo_mysql zip gd
 
 RUN curl -sS https://getcomposer.org/installer | php \
-&& mv composer.phar /usr/local/bin/composer \
-&& composer self-update
+    && mv composer.phar /usr/local/bin/composer \
+    && composer self-update
 
 WORKDIR /var/www

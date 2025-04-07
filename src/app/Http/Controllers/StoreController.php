@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class StoreController extends Controller
 {
-    public function index() {
-        
+    public function index() {        
         $stores = Store::all();
         $areas = Area::all();
         $genres = Genre::all();
